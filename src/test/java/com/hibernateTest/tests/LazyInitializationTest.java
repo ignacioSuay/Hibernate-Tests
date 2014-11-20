@@ -12,6 +12,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 /**
  * Created with IntelliJ IDEA.
@@ -53,7 +57,8 @@ public class LazyInitializationTest {
 
         Specialty specialty = service.getSpecialtyByName("Specialty");
 
-        System.out.println("Specialty ID: " + specialty.getId() + " Name: " + specialty.getName());
+        assertEquals(1, specialty.getId());
+        assertEquals("Specialty", specialty.getName());
 
         //This call will throw a Lazy Initialization Exception
         Doctor d = specialty.getDoctorList().iterator().next();
@@ -63,16 +68,16 @@ public class LazyInitializationTest {
     public void testOpenSession(){
 
         Specialty specialty = service.getSpecialtyByNameOpenSession("Specialty");
-
-        System.out.println("Specialty ID: " + specialty.getId() + " Name: " + specialty.getName());
+        assertEquals(1, specialty.getId());
+        assertEquals("Specialty", specialty.getName());
 
         Doctor doctor = specialty.getDoctorList().iterator().next();
+        assertEquals(1, doctor.getId());
+        assertEquals("Doctor A", doctor.getName());
 
-        System.out.println("Doctor ID: " + doctor.getId() + " Name: " + doctor.getName());
+        Set<Patient> patient = doctor.getPatientList();
+        assertEquals(2, patient.size());
 
-        Patient patient = doctor.getPatientList().iterator().next();
-
-        System.out.println("Patient ID: " + patient.getId() + " Name: " + patient.getName());
     }
 
 
@@ -80,16 +85,16 @@ public class LazyInitializationTest {
     public void testEagerlyFetched(){
 
         Specialty specialty = service.getSpecialtyByNameEagerlyFetched("Specialty");
-
-        System.out.println("Specialty ID: " + specialty.getId() + " Name: " + specialty.getName());
+        assertEquals(1, specialty.getId());
+        assertEquals("Specialty", specialty.getName());
 
         Doctor doctor = specialty.getDoctorList().iterator().next();
+        assertEquals(1, doctor.getId());
+        assertEquals("Doctor A", doctor.getName());
 
-        System.out.println("Doctor ID: " + doctor.getId() + " Name: " + doctor.getName());
+        Set<Patient> patient = doctor.getPatientList();
+        assertEquals(2, patient.size());
 
-        Patient patient = doctor.getPatientList().iterator().next();
-
-        System.out.println("Patient ID: " + patient.getId() + " Name: " + patient.getName());
     }
 
 

@@ -12,6 +12,11 @@ import java.nio.file.Paths;
  */
 public class FilreReaderTest {
 
+//note:
+//    java.io.File will most likely never be deprecated / unsupported.
+// That said, java.nio.file.Path is part of the more modern java.nio.file lib,
+// and does everything java.io.File can, but generally in a better way, and then some.
+
     @Test
     public void testFileReader(){
         String pathStr = "src/test/resources/test.txt";
@@ -50,7 +55,7 @@ public class FilreReaderTest {
     }
 
 
-    //BufferReader has a better perfomance because reduce the calls to the OS
+    //BufferReader has a better performance because reduce the calls to the OS
     @Test
     public void testBufferReader(){
         String pathStr = "src/test/resources/test.txt";

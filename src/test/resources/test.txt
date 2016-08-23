@@ -1,3 +1,5 @@
 this a simple text
 with only
 3 lines.
+ append this line
+append this line at the end

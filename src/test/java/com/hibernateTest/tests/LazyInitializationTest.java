@@ -94,7 +94,6 @@ public class LazyInitializationTest {
 
         Set<Patient> patient = doctor.getPatientList();
         assertEquals(2, patient.size());
-
     }
 
 

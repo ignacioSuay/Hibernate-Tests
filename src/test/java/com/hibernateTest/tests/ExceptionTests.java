@@ -66,4 +66,14 @@ public class ExceptionTests {
             super("this is my exception");
         }
     }
+
+    @Test
+    public void testingInnerClassFromOutside(){
+        NestedClassesTest nestedClassesTest = new NestedClassesTest();
+        NestedClassesTest.InnerClass i = nestedClassesTest.new InnerClass();
+        i.methodInner();
+
+        NestedClassesTest.StaticClass staticInnerClass = new NestedClassesTest.StaticClass();
+        staticInnerClass.methodStatic();
+    }
 }

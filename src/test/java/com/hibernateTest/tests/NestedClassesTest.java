@@ -26,13 +26,26 @@ public class NestedClassesTest {
 
         private String childLocalVar = "Child local";
 
-        //cannot access parentLocal
+
         void methodStatic(){
             System.out.println(parentVar);
             parentVar = "newParentStatic";
             System.out.println(parentVar);
 
+            //cannot access parentLocalVar
+//            System.out.println(parentLocalVar);
+
         }
+    }
+
+    @Test
+    public void testStaticClasses(){
+        StaticClass staticClass = new StaticClass();
+        staticClass.methodStatic();
+
+        System.out.println(staticClass.childLocalVar);
+        System.out.println(StaticClass.childStaticVar);
+
     }
 
 //    note: to create a new class from outside you need first to create an object !!!!!!
@@ -53,15 +66,7 @@ public class NestedClassesTest {
         }
     }
 
-    @Test
-    public void testNestedClasses(){
-        StaticClass staticClass = new StaticClass();
-        staticClass.methodStatic();
 
-        System.out.println(staticClass.childLocalVar);
-        System.out.println(StaticClass.childStaticVar);
-
-    }
 
     @Test
     public void testInnerClass(){

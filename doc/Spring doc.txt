@@ -1,0 +1,34 @@
+Spring
+========
+
+What is Spring?
+----------------
+The Spring Framework is an an open source development framework and inversion of control container for the Java platform.. The framework contains many extensions like extension for building web applications.
+Spring framework targets to make J2EE development easier to use and promote good programming practice by enabling a
+POJO-based programming model.
+Although the framework does not impose any specific programming model,
+it has become popular in the Java community as an alternative to, replacement for, or even addition to the Enterprise JavaBeans (EJB) model.
+
+
+
+Benefits
+----------
+
+Lightweight: Spring is lightweight when it comes to size and transparency. The basic version of spring framework is around 2MB.
+
+Inversion of control (IOC): Loose coupling is achieved in spring using the technique Inversion of Control. The objects give their dependencies instead of creating or looking for dependent objects.
+
+Container: Spring contains and manages the life cycle and configuration of application objects.
+
+Aspect oriented (AOP): Spring supports Aspect oriented programming and enables cohesive development by separating application business logic from system services.
+ - In computing, aspect-oriented programming (AOP) is a programming paradigm that aims to increase modularity by allowing
+ the separation of cross-cutting concerns. It does so by adding additional behavior to existing code (an advice) without
+ modifying the code itself, instead separately specifying which code is modified via a "pointcut" specification,
+ such as "log all function calls when the function's name begins with 'set'".
+
+
+MVC Framework: Spring's web framework is a well-designed web MVC framework, which provides a great alternative to web frameworks such as Struts or other over engineered or less popular web frameworks.
+
+Transaction Management: Spring provides a consistent transaction management interface that can scale down to a local transaction (using a single database, for example) and scale up to global transactions (using JTA, for example).
+
+Exception Handling: Spring provides a convenient API to translate technology-specific exceptions (thrown by JDBC, Hibernate, or JDO, for example) into consistent, unchecked exceptions.

@@ -32,3 +32,44 @@ MVC Framework: Spring's web framework is a well-designed web MVC framework, whic
 Transaction Management: Spring provides a consistent transaction management interface that can scale down to a local transaction (using a single database, for example) and scale up to global transactions (using JTA, for example).
 
 Exception Handling: Spring provides a convenient API to translate technology-specific exceptions (thrown by JDBC, Hibernate, or JDO, for example) into consistent, unchecked exceptions.
+
+
+What is Dependency Injection?
+------------------------------
+This concept says that you do not create your objects but describe how they should be created.
+You don't directly connect your components and services together in code but describe which services are needed by
+which components in a configuration file. A container (the IOC container) is then responsible for hooking it all up.
+
+
+What are the benefits of IOC?
+------------------------------
+It minimizes the amount of code in your application.
+
+It makes your application easy to test as it doesn't require any singletons or JNDI lookup mechanisms in your unit test cases.
+
+Loose coupling is promoted with minimal effort and least intrusive mechanism.
+
+IOC containers support eager instantiation and lazy loading of services.
+
+What is Spring IoC container?
+----------------------------
+The Spring IoC creates the objects, wire them together, configure them, and manage their complete lifecycle from creation till destruction.
+
+There are two types of IoC containers:
+
+Bean Factory container: This is the simplest container providing basic support for DI .The BeanFactory is usually preferred where the resources are limited like mobile devices or applet based applications
+
+Spring ApplicationContext Container: This container adds more enterprise-specific functionality such as the ability to resolve textual messages from a properties file and the ability to publish application events to interested event listeners.
+
+What's the difference between @Inject and @Autowire
+----------------------------------------------------
+They are the same, Java 6 introduced in part of Java CDI which Spring has chosen to support using @Inject synonymously
+with their own @Autowired annotation.
+
+
+What's the difference between @Component and @Service
+-------------------------------------------------------
+@Component is a generic stereotype for any Spring-managed component. @Repository, @Service, and @Controller are specializations of @Component for more specific use cases, for example, in the persistence, service, and presentation layers, respectively.
+
+
+

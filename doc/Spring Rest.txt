@@ -1,0 +1,46 @@
+Spring REST
+============
+While REST stands for Representational State Transfer, which is an architectural style for networked hypermedia
+applications, it is primarily used to build Web services that are lightweight, maintainable, and scalable.
+A service based on REST is called a RESTful service. REST is not dependent on any protocol, but almost every
+RESTful service uses HTTP as its underlying protocol.
+
+
+@RestController  vs @Controller
+================================
+A Base Controller interface, representing a component that receives HttpServletRequest and HttpServletResponse
+instances just like a HttpServlet but is able to participate in an MVC workflow.
+A RestController is equal to a controller but each method will include @ResponseBody on it.
+That means that the return of the bodmethody will be included in the body of a HTTP message.
+
+What is @RequestMapping?
+=========================
+The annotation is used to map web requests to Spring Controller methods.
+Possible values:
+- value: will contain the url that maps
+- consumes: the object that consumes
+- produces: the object that produces
+- params: The parameters of the mapped request, narrowing the primary mapping.
+- headers: The headers of the mapped request, narrowing the primary mapping.
+
+eg.
+@RequestMapping(value = "/apis",
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+
+What are the possible values to map parameters
+===============================================
+@PathVariable: only when the variable is in the path. Useful with GET methods.Annotation which indicates that a method parameter should be bound to a URI template variable
+@RequestBody: it will map the whole http body to one parameter.
+@RequestParam: Annotation which indicates that a method parameter should be bound to a web request parameter.
+
+
+HTTP Put vs POST
+=================
+
+POST creates a child resource, so POST to /items creates a resources that lives under the /items resource.
+Eg. /items/1. Sending the same post packet twice will create two resources.
+
+PUT is for creating or replacing a resource at a URL known by the client.
+
+Therefore: PUT is only a candidate for CREATE where the client already knows the url before the resource is created.

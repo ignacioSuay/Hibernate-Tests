@@ -1,0 +1,76 @@
+Spring Security
+================
+
+* People use Spring Security for many reasons, but most are drawn to the project after finding the security features of
+Java EE’s Servlet Specification or EJB Specification lack the depth required for typical enterprise application scenarios.
+ Whilst mentioning these standards, it’s important to recognise that they are not portable at a WAR or EAR level.
+ Therefore, if you switch server environments, it is typically a lot of work to reconfigure your application’s security
+ in the new target environment. Using Spring Security overcomes these problems, and also brings you dozens of other useful,
+ customisable security features.
+
+
+Create a configuration class
+-----------------------------
+The configuration creates a Servlet Filter known as the springSecurityFilterChain which is responsible for all the security.
+
+1. Add this Configuration and EnableWebSecurity to configure your security and extend WebSecurityConfigurerAdapter
+
+@Configuration
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+
+When you add this configuration to your application that will make that:
+- Require authentication to every URL in your application, all the data will need authenticatio now. That why usually you use ignore like:
+@Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring()
+            .antMatchers(HttpMethod.OPTIONS, "/**")
+            .antMatchers("/app/**/*.{js,html}")
+            .antMatchers("/bower_components/**")
+            .antMatchers("/i18n/**")
+            .antMatchers("/content/**")
+            .antMatchers("/swagger-ui/index.html")
+            .antMatchers("/test/**")
+            .antMatchers("/h2-console/**");
+    }
+
+- Gives you CSRF attack prevention and Session Fixation protection
+-Security Header integration
+ HTTP Strict Transport Security for secure requests
+ X-Content-Type-Options integration
+ Cache Control (can be overridden later by your application to allow caching of your static resources)
+ X-XSS-Protection integration
+ X-Frame-Options integration to help prevent Clickjacking
+
+-Integrate with the following Servlet API methods
+ HttpServletRequest#getRemoteUser()
+ HttpServletRequest.html#getUserPrincipal()
+ HttpServletRequest.html#isUserInRole(java.lang.String)
+ HttpServletRequest.html#login(java.lang.String, java.lang.String)
+ HttpServletRequest.html#logout()
+
+
+Adding http security
+-----------------------
+
+here is a basic example
+ protected void configure(HttpSecurity http) throws Exception {
+        http
+        		.authorizeRequests()
+        			.anyRequest().authenticated()  //we are saying that all the request to our app should be authenticated before;
+        			.and()
+        		.formLogin()  //Allows users to authenticate with form based login
+        			.and()
+        		.httpBasic(); //Allows users to authenticate with HTTP Basic authentication
+ }
+
+
+Form Login
+-----------
+.and()
+            .formLogin()    //Allows users to authenticate with form based login
+            .loginProcessingUrl("/api/authentication") //url log in form
+            .usernameParameter("j_username") //name of the parameter in the form; if not added the default is username
+            .passwordParameter("j_password") // name of the field in the form for password; if not added default is pasword
+            .permitAll()    // permit all users to access the login form

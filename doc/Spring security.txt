@@ -36,7 +36,7 @@ When you add this configuration to your application that will make that:
     }
 
 - Gives you CSRF attack prevention and Session Fixation protection
--Security Header integration
+- Security Header integration
  HTTP Strict Transport Security for secure requests
  X-Content-Type-Options integration
  Cache Control (can be overridden later by your application to allow caching of your static resources)
@@ -74,3 +74,71 @@ Form Login
             .usernameParameter("j_username") //name of the parameter in the form; if not added the default is username
             .passwordParameter("j_password") // name of the field in the form for password; if not added default is pasword
             .permitAll()    // permit all users to access the login form
+
+
+Logout
+----------
+when youu add;
+
+http
+    .logout()
+
+By default the url will be /logout, invalidates the HTTP Session, delets the rememerMe configuration. Clears SecurityContextHolder.
+ .and()
+             .logout()
+             .logoutUrl("/api/logout")
+             .logoutSuccessHandler(ajaxLogoutSuccessHandler)
+             .deleteCookies("JSESSIONID", "CSRF-TOKEN")
+             .permitAll()
+
+
+Authentication
+---------------
+
+The method of how are you going to authenticate the users is in
+
+    @Inject
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth
+            .userDetailsService(userDetailsService)
+                .passwordEncoder(passwordEncoder());
+    }
+
+Use the userDetailsService for custom implementations.
+The userDetailService is a custom bean which needs to implement the org.springframework.security.core.userdetails.UserDetailsService interface.
+ This interface has only one method:
+ UserDetails loadUserByUsername(String var1) throws UsernameNotFoundException.
+
+ and you need to pass to the password encoder.
+
+Enable Secured and Prepost authorize and Pre/post filter
+----------------------------------------------------------
+To enable secure and prepost you can do that in your security configuration with
+@Configuration
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter
+
+@Secured
+---------
+provides method security configuration. For instance:
+    @RequestMapping(value = "/users",
+        method = RequestMethod.PUT,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    @Transactional
+    @Secured(AuthoritiesConstants.ADMIN)
+    public ResponseEntity<ManagedUserDTO> updateUser(@RequestBody ManagedUserDTO managedUserDTO) {}
+
+
+@Secured vs @PreAuthorize
+--------------------------
+PreAuthorize can use Spring EL, so it is more powerful and can evaluate expressions.
+@PreAuthorize("#contact.name == principal.name)"
+public void doSomething(Contact contact)
+
+@PreAuthorize vs @PostAuthorize
+--------------------------------
+PreAuthorize checks before running a method and post after.
+
+

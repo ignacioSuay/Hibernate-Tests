@@ -90,4 +90,31 @@ public class CollectionTest {
 // never to throw ConcurrentModificationException. This implementation is well suited to maintaining event-handler lists,
 // in which change is infrequent, and traversal is frequent and potentially time-consuming.
 
+    @Test
+    public void testIteratorVsForLoop(){
+// si hicieamos esto petaria pq Arrays.asList se basa en un array por lo que no se puede ni anyadir ni eliminar elementos
+//        List<String> strings = Arrays.asList("hola", "q", "hase");
+
+        List<String> strings = new ArrayList<>(Arrays.asList("hola", "q", "hase", "?"));
+
+        Iterator<String> iterator = strings.iterator();
+        while(iterator.hasNext()){
+            String next = iterator.next();
+            if(next.equals("q")){
+                iterator.remove();
+            }
+        }
+        System.out.println(strings.toString());
+
+        try{
+            for(String string : strings){
+                //this will fail and it is why you need an iterator
+                strings.remove(0);
+            }
+        }catch(ConcurrentModificationException e){
+            System.out.println("this method will trhow a concurrent Modification ex, that's why we need to use an iterator");
+        }
+
+          System.out.println(strings.toString());
+    }
 }

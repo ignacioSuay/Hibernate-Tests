@@ -1,0 +1,35 @@
+Database performance
+=====================
+
+How to improve database performance:
+logical level:
+- Have the most efficient SQL queries :
+    - try to reduce the number of joins;
+    - Don't query like expressions
+    - Use explain to know which tables are executing and if indexes are used
+- Check performance of the queries
+- Filter results by cheapest first; filter by cheap execution first and then work with small  data
+    - Check time: either user show profiles (old way) or check the tables performance_schema.events_statements_history_long to get the overall time or performance_schema.events_stages_history_long for getting all the stages of the query
+- Design trade-off to support some use case better than other
+
+physical level:
+- Right tables parameters
+- indexes
+- Cache size
+- Denormalization - you could use materialized views.
+
+
+Java performance
+=================
+- Use immutable classes (no setters and final attributes and class); They are thread safe so no need to sync, and can be cache.
+- Use a profiler to monitorize your app. Big heap space will make it slower so check it and try to  improve the use of garbage collectors.
+- Use multi-threading when possible (parrallelstream, forkJoinPool)
+- Use StringBuilder instead of +
+- Primitives are faster than Objects because wrapers are stored in the heap while primites in the stack
+- when iterating a map and you need both key and value use for (Entry<K,V> entry: map.entreySet()) insted of keySet y and then get.
+- don't use concurrent(concurrent map) implementations in a thread-safe place
+- EnumMap and EnumSet are faster.
+
+
+
+

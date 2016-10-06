@@ -44,3 +44,16 @@ Eg. /items/1. Sending the same post packet twice will create two resources.
 PUT is for creating or replacing a resource at a URL known by the client.
 
 Therefore: PUT is only a candidate for CREATE where the client already knows the url before the resource is created.
+
+
+Microservices vs SOA
+======================
+Microservices must be independently deployable, whereas SOA services are often implemented in deployment monoliths
+
+Microservices must be autodeployable and isolated.
+
+Microservices can be considered a specialisation or extension of service-oriented architectures (SOA) used to build
+distributed software systems. As with SOA, services in a microservice architecture (MSA)[1] are processes that
+communicate with each other over a network in order to fulfill a goal. Also, like SOA, these services use technology-agnostic
+protocols.[2][3][4] The microservices' architectural style is a first realisation of SOA that followed the introduction
+of DevOps and is becoming more popular for building continuously deployed systems.

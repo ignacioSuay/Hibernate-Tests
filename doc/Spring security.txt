@@ -142,3 +142,37 @@ public void doSomething(Contact contact)
 PreAuthorize checks before running a method and post after.
 
 
+
+Attacks
+=========
+
+Session Fixation Attack Protection
+------------------------------------
+A simple attack scenario[edit]
+Straightforward scenario:
+
+Mallory has determined that http://unsafe.example.com/ accepts any session identifier, accepts session identifiers from query strings and has no security validation. http://unsafe.example.com/ is thus not secure.
+Mallory sends Alice an e-mail: "Hey, check this out, there is a cool new account summary feature on our bank, http://unsafe.example.com/?SID=I_WILL_KNOW_THE_SID". Mallory is trying to fixate the SID to I_WILL_KNOW_THE_SID.
+Alice is interested and visits http://unsafe.example.com/?SID=I_WILL_KNOW_THE_SID. The usual log-on screen pops up, and Alice logs on.
+Mallory visits http://unsafe.example.com/?SID=I_WILL_KNOW_THE_SID and now has unlimited access to Alice's account.
+
+* Spring Security protects against this automatically by creating a new session or otherwise changing the session ID when a user logs in
+
+
+CSRF - Cross site request forgery
+----------------------------------
+
+Cuando estas logeado en A y un cabron te hace clickar un enlace en otro sitio pero el enlace lleva un http request a A.
+
+Way Spring security solves the problem: use of Synchronizer Token Pattern:
+This solution is to ensure that each request requires, in addition to our session cookie, a randomly generated token as an HTTP parameter. When a request is submitted, the server must look up the expected value for the parameter and compare it against the actual value in the request. If the values do not match, the request should fail.
+
+
+The way it works is the first time that there is a request from the client to the server, the server will create a token. All it wants is a token sent to it in a header called “X-CSRF”.
+*The value of the CSRF token was available server side in the HttpRequest attributes from the initial request that loaded the home page
+* Spring put the CSRF token in session attribute "_csrf"
+
+Then to be able to work with angular you need to create a cookie with the token and that will be it. have a look to CsrfCookieGeneratorFilter.
+
+
+

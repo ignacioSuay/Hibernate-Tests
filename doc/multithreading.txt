@@ -1,0 +1,16 @@
+Multi-threading
+===============
+Thread problems:
+
+Deadlock: Imagine 2 threads (t1 and t2) and 2 objects (ob1, b2). if t1 syncronize on ob1 and then tries to sync in ob2,
+while t2 sync in ob2 and then tries to sync in obj1. If both start at the same time you will have a deadlock because t1
+will be waiting for ob2, and t2 for ob1 infinitely.
+
+
+Livelock: When 1 thread undoes what the other thread is doing. Some examples of this type of thread are for instance
+the robot cars in the bridge where one tries to pass and then reverse. Or if 2 people are trying to eat but there is only one spoon,
+and they will refuse to start if the other person is waiting.
+
+Lock Starvation: Threads have priority numbers from 1 to 10. The thread scheduler will prioritise high priority threads,
+and low priority thread will starve for death.
+

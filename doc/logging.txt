@@ -1,0 +1,20 @@
+Logging
+==========
+
+The Simple Logging Facade for Java (SLF4J) serves as a simple facade or abstraction for various logging frameworks (e.g. java.util.logging, logback, log4j) allowing the end user to plug in the desired logging framework at deployment time.
+
+Logback is a successor of log4j, it is faster and simpler.
+
+Java.util.logging (JUL) is the slowest one.
+
+Log levels: ALL < TRACE < DEBUG < INFO < WARN < ERROR < FATAL < OFF.
+
+The logger context is the name of the logger which usually is package.class. This way we can arrange loggers as a tree and define the levels for a specific package. e.g. <logger name="javax.activation" level="WARN"/>
+
+Appender: is an output destination, could be a file, a server or a database, JMS.
+
+
+
+
+
+

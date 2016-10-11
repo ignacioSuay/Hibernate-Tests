@@ -13,8 +13,35 @@ The logger context is the name of the logger which usually is package.class. Thi
 
 Appender: is an output destination, could be a file, a server or a database, JMS.
 
+layout: format of the output of the log.
 
 
+
+Configuration
+==============
+
+the very basic structure of the configuration file can be described as:
+ <configuration> element:
+    containing zero or more <appender> elements,
+    followed by zero or more <logger> elements,
+    followed by at most one <root> element
+
+
+Configuration tag
+------------------
+<configuration scan="true"> -> the scan= true, will make to scan for changes in the logback.xml file every minute and update the configuration.
+You can change the time of scanning by adding scanPeriod. <configuration scan="true" scanPeriod="30 seconds" >
+
+Root tag
+----------
+<root level="@logback.loglevel@">
+        <appender-ref ref="CONSOLE"/>
+</root>
+
+The root will define the level for the root context, buy default the root level is set to Debug.
+
+Appenders
+-----------
 
 
 

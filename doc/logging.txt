@@ -32,6 +32,43 @@ Configuration tag
 <configuration scan="true"> -> the scan= true, will make to scan for changes in the logback.xml file every minute and update the configuration.
 You can change the time of scanning by adding scanPeriod. <configuration scan="true" scanPeriod="30 seconds" >
 
+Appenders
+-----------
+
+The appender will admit 2 attributes name (id of the appender) and class (the fully qualified name of the appender class to instantiate, e.g. ch.qos.logback.classic.AsyncAppender)
+
+The appender could contain:
+ contain zero or one <layout> elements,
+ zero or more <encoder> elements and
+ zero or more <filter> elements
+
+An example of creating an appender:
+<appender name="FILE" class="ch.qos.logback.core.FileAppender">
+    <file>myApp.log</file>
+    <encoder>
+      <pattern>%date %level [%thread] %logger{10} [%file:%line] %msg%n</pattern>
+    </encoder>
+</appender>
+
+and examples of using this appender:
+
+<logger name="chapters.configuration">
+    <appender-ref ref="FILE" />
+</logger>
+
+<root level="debug">
+    <appender-ref ref="STDOUT" />
+</root>
+
+Logger
+----------
+
+Set the log level using hierarchies:
+
+<logger name="org.wwarn.drugquality" level="@logback.loglevel@"/>
+<logger name="javax.activation" level="WARN"/>
+<logger name="javax.mail" level="WARN"/>
+
 Root tag
 ----------
 <root level="@logback.loglevel@">
@@ -39,9 +76,4 @@ Root tag
 </root>
 
 The root will define the level for the root context, buy default the root level is set to Debug.
-
-Appenders
------------
-
-
 

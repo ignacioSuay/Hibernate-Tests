@@ -77,3 +77,15 @@ Root tag
 
 The root will define the level for the root context, buy default the root level is set to Debug.
 
+File location
+--------------
+when you deploy the application to tomcat the default location of the log file will be the the root of the tomcat folder.
+You will need to make sure that your application has permission to write in the folder.
+One solution is to add a folder to tomcat7/logs/ eg. tomcat7/logs/myapp and give tomcat permissions and ownership.
+
+example:
+<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/myapp/myapp.log</file>
+        ....
+
+that will set the log file in var/lib/tomcat7/logs/myapp/myapp.log

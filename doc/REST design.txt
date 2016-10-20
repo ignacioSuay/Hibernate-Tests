@@ -1,0 +1,38 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\fs24 \cf0 Rest best practices\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+Versioning -> add the version in the uri, also without the version default to the newest. \
+add a count -> eg. /v1/books/count so the client could now how many books are.\
+for specific variations or for getting partial information use query parameters. Eg for sorting or for getting a few fields. \
+\
+Response codes\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+2xx -> means success\
+200 Ok -> all great and adds content\
+201 Created-> created ok and add the \'93location\'94 with the uri\
+204 No content -> all ok and no content.\
+202 Accepted -> Has been accepted and later will send you the result. Could also add the location for following the resource. \
+\
+3xx redirection -> redirection the \
+\
+4xx -> client errors\
+401Unauthorized\
+404 not found\
+406 not acceptable\
+415 unssopurted\
+\
+5xx-> server errors\
+500 internal server error\
+503 service unavailable\
+\
+Validation\
+\'97\'97\'97\'97\'97\'97\'97\
+You can add the @Valid annotation next to the parameters to make sure the object respects the validation in the Pojo.\
+\
+}

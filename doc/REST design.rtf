@@ -35,4 +35,14 @@ Validation\
 \'97\'97\'97\'97\'97\'97\'97\
 You can add the @Valid annotation next to the parameters to make sure the object respects the validation in the Pojo.\
 \
+Caching\
+\'97\'97\'97\'97\'97\'97\'97\
+\
+There are 4 options:\
+Using expires in the header: the client won\'92t try to ask again until the expired date has finish\
+using Cachecontrol manage: as expires but instead of a date use the number of seconds. \
+\
+last modified: Send the last modified date. So now the client will ask again for a resource and the last time it was changed and if it was not changed the server will say so. \
+eTag: similar to the one before, but with a custom tag instead of a date. \
+\
 }

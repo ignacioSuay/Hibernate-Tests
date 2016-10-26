@@ -32,6 +32,8 @@ import java.util.concurrent.Future;
 // The invokeAll() returns a list of Future objects via which you can obtain the results of the executions of each Callable.
 
 //When you are done using the ExecutorService you should shut it down, so the threads do not keep running.
+
+//    . If you call the get() method directly while the task is not complete, the method blocks until it completes and returns the value once available.
 public class ExecutorServiceTests {
 
     private class MyCallable implements Callable<Integer>{
@@ -70,6 +72,7 @@ public class ExecutorServiceTests {
             System.out.println("result is:");
             System.out.println(future.get().toString());
         }
+        es.shutdown();
     }
 
 }

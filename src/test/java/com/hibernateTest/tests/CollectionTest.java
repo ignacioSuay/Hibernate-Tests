@@ -23,7 +23,7 @@ import java.util.*;
  *  * Vector: As ArrayList but syncronized. It is thread safe.
  *  * LinkedList: Ordered by insertion. Better for add elements to the beginning of the List or iterate over the List to delete elements from its interior
  *
- * ArrayList vs Vector:
+ * CopyOnWriteArrayList vs Vector:
  *  - If reads are much more common compared to writes then you would tend to prefer CopyOnWriteArrayList, since the array copying overhead is only incurred on writes.
  *  - If the size of the Array is small, then the cost of making array copies will also be small, hence this will favour CopyOnWriteArrayList over Vector.
  *  - Basically:  if you have much more reads than writes, use CopyOnWriteArrayList, otherwise use Vector

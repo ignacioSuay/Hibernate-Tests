@@ -14,3 +14,18 @@ and they will refuse to start if the other person is waiting.
 Lock Starvation: Threads have priority numbers from 1 to 10. The thread scheduler will prioritise high priority threads,
 and low priority thread will starve for death.
 
+Threads
+=========
+
+You can create a thread by:
+- extending Thread -> to initalize you just called the class e.g new MyThread()
+- implementing Runnable -> to initialie you pass the class to thread e.g. new Thread(new MyRunnableClass())
+
+Both ways needs to implement public void run(){} and then you need to call t.start()
+
+syncronized you can use it in blocks or in methods. In methods it syncronize the current object.
+
+if there is an exception in the sync block, the lock will be release
+
+
+

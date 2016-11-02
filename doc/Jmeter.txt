@@ -1,0 +1,39 @@
+JMeter
+=======
+
+To Record a test
+=================
+In firefox:
+
+1) go to preferences -> advanced -> network
+
+2) click on Connection settings
+
+3) Set manual proxy configurations: localhost 8888 (8888 is the port that you should have in the test cript recorder)
+
+
+In Jmeter go to: File... -> templates -> recording and then create
+
+To record the test just need to go to Workbench -> Http(s) scrip test recorder and click start.
+
+ Then go to firefox and do the actions that you would like to add.
+
+
+To Run a test
+==============
+
+It is better to add some listeners to the test to analyze the data.
+For instance: "summary report" and "view results in a table" are very convenient.
+
+To reproduce sign in
+=====================
+Some apps like jhipter sends a x-csrf token when you log in, and you cannot use the same token twice.
+So in Jmeter you could use a post processor called "regular expression extractor" to extract the token from the first called
+and pass it to the following calls.
+Have a look to this video for more information: 
+
+
+
+
+
+

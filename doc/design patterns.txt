@@ -10,3 +10,19 @@ Creational Design Patterns
 - Factory method: When we have multiple implementations for one interface and then we have one method to create one or the other depending on the configuration.
 
 - Prototype: Create duplicate objects using Cloneable.
+
+Structural Design Patterns
+============================
+
+Facade: Create a single class to control multiple complex classes.
+
+Flyweight: Reuse already created objects, and set the properties using setters. User to reduce memory when createting a lot of new objects.
+
+Decorator: Create a new class that wraps other class and adds functionality.
+
+Composite: When a class has a link to the same class. For instance an employee could have a link to his boss and a list of subemployees.
+
+Proxy: In proxy pattern, a class represents functionality of another class. A classic example is a ProxyImage  class which points to an image,
+but is is quicker to load because you don't have to load the underlying resource.
+
+

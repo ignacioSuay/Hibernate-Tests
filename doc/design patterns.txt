@@ -1,0 +1,12 @@
+Design patterns
+================
+
+Creational Design Patterns
+===========================
+- Singleton: Create a class with a private constructor so it will only created once.
+
+- Builder: When we need more than 3 arguments to create a class is good to create a Builder class to improve usability.
+
+- Factory method: When we have multiple implementations for one interface and then we have one method to create one or the other depending on the configuration.
+
+- Prototype: Create duplicate objects using Cloneable.

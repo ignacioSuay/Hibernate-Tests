@@ -26,3 +26,15 @@ Proxy: In proxy pattern, a class represents functionality of another class. A cl
 but is is quicker to load because you don't have to load the underlying resource.
 
 
+Behavorial Design Patterns
+===========================
+
+Chain of Responsability: Creates a chain of receiver objects. In this pattern, normally each receiver contains reference
+ to another receiver. If one object cannot handle the request then it passes the same to the next receiver and so on.
+
+Command: An object encapsulates everything needed to execute a method in another object.
+
+Iterator: One object can traverse the elements of another object.
+
+Template: An abstract classes defines in a final method the order of the methods to be executed.
+The implementations can override the methods that the template called (but not the order of calling)

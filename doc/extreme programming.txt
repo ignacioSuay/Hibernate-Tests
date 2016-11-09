@@ -1,0 +1,28 @@
+Extreme programming practices (XP practices)
+=============================================
+Definition: Is an agile software development methodology used to implement software projects
+XP is not so much a standard as it is a series of processes or methods.
+
+1. User stories (planning):
+
+2. Small releases (building blocks):
+
+3. Metaphor (standardized naming schemes)
+
+4. Collective ownership:
+
+5. Coding standard:
+
+6. Simple design:
+
+7. Refactoring:
+
+8. Testing/TDD:
+
+9. Pair programming:
+
+10. Continuous integration:
+
+11. On-site customer:
+
+12. 40-hour workweek:

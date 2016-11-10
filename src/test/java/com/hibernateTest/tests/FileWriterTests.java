@@ -12,6 +12,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 /**
  * Created by suay on 8/23/16.
  */
@@ -49,8 +51,8 @@ public class FileWriterTests {
         Files.setAttribute(path, "user:type", ByteBuffer.wrap(("test").getBytes("UTF-8")));
 
         byte[] attribute = (byte[]) Files.getAttribute(path, "user:type");
-        String a = new String(attribute);
-        System.out.println(a);
+        String attributeStr = new String(attribute);
+        assertThat("test").isEqualTo(attributeStr);
     }
 
 

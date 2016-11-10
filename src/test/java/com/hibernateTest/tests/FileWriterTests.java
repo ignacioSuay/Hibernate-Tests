@@ -2,9 +2,11 @@ package com.hibernateTest.tests;
 
 import org.junit.Test;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.nio.ByteBuffer;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -39,6 +41,16 @@ public class FileWriterTests {
         }catch(IOException ioe){
             ioe.printStackTrace();
         }
+    }
+
+    @Test
+    public void testFileSetAttribute() throws IOException {
+        Path path = Paths.get(TEST_FILE);
+        Files.setAttribute(path, "user:type", ByteBuffer.wrap(("test").getBytes("UTF-8")));
+
+        byte[] attribute = (byte[]) Files.getAttribute(path, "user:type");
+        String a = new String(attribute);
+        System.out.println(a);
     }
 
 

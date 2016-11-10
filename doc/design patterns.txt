@@ -1,0 +1,40 @@
+Design patterns
+================
+
+Creational Design Patterns
+===========================
+- Singleton: Create a class with a private constructor so it will only created once.
+
+- Builder: When we need more than 3 arguments to create a class is good to create a Builder class to improve usability.
+
+- Factory method: When we have multiple implementations for one interface and then we have one method to create one or the other depending on the configuration.
+
+- Prototype: Create duplicate objects using Cloneable.
+
+Structural Design Patterns
+============================
+
+Facade: Create a single class to control multiple complex classes.
+
+Flyweight: Reuse already created objects, and set the properties using setters. User to reduce memory when createting a lot of new objects.
+
+Decorator: Create a new class that wraps other class and adds functionality.
+
+Composite: When a class has a link to the same class. For instance an employee could have a link to his boss and a list of subemployees.
+
+Proxy: In proxy pattern, a class represents functionality of another class. A classic example is a ProxyImage  class which points to an image,
+but is is quicker to load because you don't have to load the underlying resource.
+
+
+Behavorial Design Patterns
+===========================
+
+Chain of Responsability: Creates a chain of receiver objects. In this pattern, normally each receiver contains reference
+ to another receiver. If one object cannot handle the request then it passes the same to the next receiver and so on.
+
+Command: An object encapsulates everything needed to execute a method in another object.
+
+Iterator: One object can traverse the elements of another object.
+
+Template: An abstract classes defines in a final method the order of the methods to be executed.
+The implementations can override the methods that the template called (but not the order of calling)

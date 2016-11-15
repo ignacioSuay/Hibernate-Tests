@@ -19,7 +19,7 @@ XP is not so much a standard as it is a series of processes or methods.
 
 8. Testing/TDD:
 
-9. Pair programming:
+9. Pair programming: Pair programming (sometimes referred to as peer programming) is an agile software development technique in which two programmers work as a pair together on one workstation. One, the driver, writes code while the other, the observer, pointer or navigator, reviews each line of code as it is typed in.
 
 10. Continuous integration:
 

@@ -1,0 +1,42 @@
+Cucumber
+==========
+
+To create Cucumber tests:
+
+1. Create your features in src/test/features/user/user.feature
+
+e.g.
+Feature: User management
+
+	Scenario: Retrieve administrator user
+		When I search user 'admin'
+		Then the user is found
+		And his last name is 'Administrator'
+
+2. Create a class with a cucumber runner
+
+@RunWith(Cucumber.class)
+@CucumberOptions(plugin = "pretty", features = "src/test/features")
+public class CucumberTest  {
+}
+
+3. Create some steps:
+public class UserStepDefs extends StepDefs {
+
+    @Inject
+    private UserResource userResource;
+
+    private MockMvc restUserMockMvc;
+
+    @Before
+    public void setup() {
+        this.restUserMockMvc = MockMvcBuilders.standaloneSetup(userResource).build();
+    }
+
+    @When("^I search user '(.*)'$")
+    public void i_search_user_admin(String userId) throws Throwable {
+        actions = restUserMockMvc.perform(get("/api/users/" + userId)
+                .accept(MediaType.APPLICATION_JSON));
+    }
+
+

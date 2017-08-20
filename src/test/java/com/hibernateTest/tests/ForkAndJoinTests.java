@@ -20,7 +20,7 @@ import java.util.concurrent.RecursiveTask;
 //        }
 
 //Points to remember:
-// Create a class which extens RecursiveTask<Object> and override <V> compute
+// Create a class which extends RecursiveTask<Object> and override <V> compute
 // Create 2 parts, and call fork on the first part and compute in the second and calculate the result first.join() operation sencond.compute()
 // To run the code create a ForkJoinPool forkJoinPool = new ForkJoinPool(NUM_THREADS);
 //Get the result by forkJoinPool.invoke(new MultiplyRecursive(1, 11));

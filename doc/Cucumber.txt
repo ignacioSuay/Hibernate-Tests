@@ -40,3 +40,58 @@ public class UserStepDefs extends StepDefs {
     }
 
 
+
+
+Example of steps
+=================
+
+public class ArticleStepDefs extends StepDefs {
+
+    @Inject
+    private ArticleResource articleResource;
+
+    private MockMvc restArticleMockMvc;
+
+    @Before
+    public void setup() {
+        this.restArticleMockMvc = MockMvcBuilders.standaloneSetup(articleResource).build();
+    }
+
+    @When("^I search for pubMedId (.*)$")
+    public void i_search_for_pubMedId(Integer pubMedId) throws Exception {
+        actions = restArticleMockMvc.perform(get("/api/articles/findPubMed/" + pubMedId)
+            .accept(MediaType.APPLICATION_JSON));
+    }
+
+    @Then("the article is found$")
+    public void the_article_is_found() throws Exception{
+        actions
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON));
+    }
+
+    @Then("^the title is '(.*)'$")
+    public void the_title_is(String title) throws Exception{
+        actions.andExpect(jsonPath("$.title").value(title));
+    }
+
+    @Then("^the first author is '(.*)'$")
+    public void the_first_author_is(String firstAuthor) throws Exception{
+        actions.andExpect(jsonPath("$.firstAuthor").value(firstAuthor));
+    }
+
+    @Then("^the second author is '(.*)'$")
+    public void the_second_author_is(String secondAuthor) throws Exception{
+        actions.andExpect(jsonPath("$.secondAuthor").value(secondAuthor));
+    }
+
+    @Then("^it was published in (.*)$")
+    public void it_was_published_in(Integer yearPublished) throws Exception{
+        actions.andExpect(jsonPath("$.yearPublished").value(yearPublished));
+    }
+
+    @Then("^the journal is '(.*)'$")
+    public void the_journal_is(String journal) throws Exception{
+        actions.andExpect(jsonPath("$.journal").value(journal));
+    }
+}

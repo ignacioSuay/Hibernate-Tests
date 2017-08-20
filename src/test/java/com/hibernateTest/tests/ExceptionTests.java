@@ -36,13 +36,11 @@ import org.junit.Test;
 public class ExceptionTests {
 
 
-
-
     @Test
-    public void testRuntimeEx(){
+    public void testRuntimeEx() {
         try {
             throwRuntimeException();
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             System.out.println("Exception is catched here");
             e.printStackTrace();
         }
@@ -50,7 +48,7 @@ public class ExceptionTests {
 
     //    If a method does not have a throws clause, it does not mean it cannot throw any
 //            exceptions; it just means it cannot throw any checked exceptions.
-    private void throwRuntimeException(){
+    private void throwRuntimeException() {
         //you can throw RuntimeExceptions in th
         throw new IllegalArgumentException();
     }
@@ -60,20 +58,19 @@ public class ExceptionTests {
         throw new MyException();
     }
 
-
-    private class MyException extends Exception{
-        public MyException(){
-            super("this is my exception");
-        }
-    }
-
     @Test
-    public void testingInnerClassFromOutside(){
+    public void testingInnerClassFromOutside() {
         NestedClassesTest nestedClassesTest = new NestedClassesTest();
         NestedClassesTest.InnerClass i = nestedClassesTest.new InnerClass();
         i.methodInner();
 
         NestedClassesTest.StaticClass staticInnerClass = new NestedClassesTest.StaticClass();
         staticInnerClass.methodStatic();
+    }
+
+    private class MyException extends Exception {
+        public MyException() {
+            super("this is my exception");
+        }
     }
 }

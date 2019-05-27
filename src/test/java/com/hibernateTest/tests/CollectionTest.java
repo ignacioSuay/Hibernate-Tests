@@ -13,7 +13,7 @@ import java.util.*;
  * - Set: collection with no duplicates and no positional access
  *  * HashSet: Unordered set but much faster than treeset. No thread safe.
  *  * TreeSet: Ordered Set but slower than hashset, it orders using comparable. No thread safe.
- *  * LinkedHashSet:Ordered by insertion. performance close to hashset. No thread safe.
+ *  * LinkedHashSet: Ordered by insertion. performance close to hashset. Use when the order by insertion is important. No thread safe.
  *  * EnumSet:  high-performance Set implementation for enum types. All of the members of an enum set must be of the same enum type. eg EnumSet<Color> yellow = EnumSet.of(Color.RED, Color.GREEN);
  *  * CopyOnWriteArraySet:  a Set implementation backed up by a copy-on-write array. It is thread safe.
  *
@@ -39,6 +39,7 @@ import java.util.*;
  * Comparable vs Comparator: you implement comparable with the method int compateTo(Object obj) and is the natural order of the class.
  *  if you want a particular order you create a new class which implements comparator and the methos is int compare(Object o1, Object o2){}
  *
+ *  In Java 8 you can compare a collectoin by doing list.stream().sorted(Comparator.comparing(Student::getAge)).collect(Collectors.toList());
  *
  *  Map: Map doesn't extend from Collection!
  *  * HashMap: fast but Unordered
